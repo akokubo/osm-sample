@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSONマーカー - OpenStreetMap</title>
+    <!-- LeafletのCSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        #map {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <h1>八戸市のマップ</h1>
+    <div id="map"></div>
+
+    <!-- LeafletのJSライブラリ -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // 地図を初期化
+        const map = L.map('map').setView([40.512283, 141.488708], 12);
+
+        // OpenStreetMapタイルを設定
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // JSONデータを取得してマーカーを作成
+        fetch('locations.json')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(location => {
+                    // 各地点にマーカーを追加
+                    L.marker([location.latitude, location.longitude])
+                        .addTo(map)
+                        .bindPopup(`<h3>${location.title}</h3><p>${location.description}</p>`);
+                });
+            })
+            .catch(error => console.error('Error loading JSON:', error));
+    </script>
+</body>
+</html>

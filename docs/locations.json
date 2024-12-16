@@ -1,0 +1,20 @@
+[
+    {
+        "latitude": 40.512283,
+        "longitude": 141.488708,
+        "title": "八戸市中心部",
+        "description": "八戸市の中心地です。観光やビジネスに最適。"
+    },
+    {
+        "latitude": 40.540783,
+        "longitude": 141.493123,
+        "title": "八戸公園",
+        "description": "自然豊かな公園です。家族連れにおすすめ。"
+    },
+    {
+        "latitude": 40.485632,
+        "longitude": 141.457829,
+        "title": "種差海岸",
+        "description": "海岸線の景観が美しい場所です。"
+    }
+]
